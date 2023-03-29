@@ -8,6 +8,7 @@ public class Formation
     private String nomFormation;
     private int prixFormation;
 
+
     private ArrayList<Participant> lesParticipants;
 
     public Formation(int idFormation, String nomFormation, int prixFormation) {
@@ -34,6 +35,7 @@ public class Formation
             if (part.isEstPresent() == true)
             {
                 nbParticipant = nbParticipant + 1;
+
             }
             i++;
         }
@@ -68,12 +70,15 @@ public class Formation
     public double TauxDePresence()
     {
         // A compléter ici
-        double taux;
-        int i;
+        double taux =0;
+        double participant = GetNombreDePresents();
 
-
-
-        return 0;
+        for (Participant prt: lesParticipants)
+        {
+            taux = participant / lesParticipants.size();
+            break;
+        }
+        return taux;
     }
 
     // Cette méthode permet de calculer le bénéfice de la formation.
@@ -82,6 +87,12 @@ public class Formation
     public double BeneficeFormation()
     {
         // A compléter ici
-        return  0;
+        double  benef = 0;
+        int i = 0;
+        benef = (GetNombreDePresents() * prixFormation) - CalculerFraisRemboursementKilometriques();
+
+        return  benef;
     }
+
+
 }
